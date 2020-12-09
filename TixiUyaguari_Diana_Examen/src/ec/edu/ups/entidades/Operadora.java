@@ -1,6 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Table(name = "operadora")
 public class Operadora implements Serializable {
 
 	
@@ -23,18 +24,17 @@ public class Operadora implements Serializable {
 	private String ope_nombre;
 	
 	@OneToMany(cascade = CascadeType.ALL , mappedBy = "operadora")
-	private Set<Telefono>telefono = new HashSet<Telefono>();
+	private ArrayList<Telefono>telefonos = new ArrayList<Telefono>();
 
 	public Operadora() {
 		super();
 	}
 
 	
-	public Operadora(int ope_id, String ope_nombre, Set<Telefono> telefono) {
+	public Operadora(int ope_id, String ope_nombre) {
 		super();
 		this.ope_id = ope_id;
 		this.ope_nombre = ope_nombre;
-		this.telefono = telefono;
 	}
 
 
@@ -54,12 +54,19 @@ public class Operadora implements Serializable {
 		this.ope_nombre = ope_nombre;
 	}
 
-	public Set<Telefono> getTelefono() {
-		return telefono;
+	
+	public ArrayList<Telefono> getTelefonos() {
+		return telefonos;
 	}
 
-	public void setTelefono(Set<Telefono> telefono) {
-		this.telefono = telefono;
+
+	public void setTelefonos(ArrayList<Telefono> telefonos) {
+		this.telefonos = telefonos;
+	}
+
+
+	public void addTelefonos(Telefono telefono) {
+		this.telefonos.add(telefono);
 	}
 
 	public static long getSerialversionuid() {

@@ -11,25 +11,25 @@ public class JPADAOFactory extends DAOFactory {
 	@Override
 	public PersonaDAO getPersonaDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPAPersonaDAO();
 	}
 
 	@Override
 	public OperadoraDAO getOperadoraDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPAOperadoraDAO();
 	}
 
 	@Override
 	public TipoDAO getTipoDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPATipoDAO();
 	}
 
 	@Override
 	public TelefonoDAO getTelefonoDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPATelefonoDAO();
 	}
 
 }

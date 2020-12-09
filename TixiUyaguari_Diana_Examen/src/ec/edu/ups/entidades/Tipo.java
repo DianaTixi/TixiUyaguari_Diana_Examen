@@ -1,6 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Table(name = "tipo")
 public class Tipo implements Serializable {
 
 	
@@ -20,21 +21,21 @@ public class Tipo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int tip_id;
+	@Column(nullable = false)
 	private String tip_nombre;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo")
-	private Set<Telefono> telefono = new HashSet<Telefono>();
+	private ArrayList<Telefono> telefonos = new ArrayList<Telefono>();
 
 	public Tipo() {
 		super();
 	}
 	
 
-	public Tipo(int tip_id, String tip_nombre, Set<Telefono> telefono) {
+	public Tipo(int tip_id, String tip_nombre) {
 		super();
 		this.tip_id = tip_id;
 		this.tip_nombre = tip_nombre;
-		this.telefono = telefono;
 	}
 
 
@@ -54,12 +55,18 @@ public class Tipo implements Serializable {
 		this.tip_nombre = tip_nombre;
 	}
 
-	public Set<Telefono> getTelefono() {
-		return telefono;
+	
+	public ArrayList<Telefono> getTelefonos() {
+		return telefonos;
 	}
 
-	public void setTelefono(Set<Telefono> telefono) {
-		this.telefono = telefono;
+
+	public void setTelefonos(ArrayList<Telefono> telefonos) {
+		this.telefonos = telefonos;
+	}
+	
+	public void addTelefonos(Telefono telefono) {
+		this.telefonos.add(telefono);
 	}
 
 	public static long getSerialversionuid() {

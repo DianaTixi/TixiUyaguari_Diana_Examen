@@ -8,7 +8,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Table(name = "telefono")
 public class Telefono implements Serializable {
 
 	
@@ -17,6 +17,8 @@ public class Telefono implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int tel_id;
+	
+	@Column(nullable = false)
 	private String tel_numero;
 	
 	@ManyToOne

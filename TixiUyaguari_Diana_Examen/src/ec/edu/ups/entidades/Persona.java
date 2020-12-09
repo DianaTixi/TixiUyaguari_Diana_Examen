@@ -1,6 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
  */
 
 @Entity 
+@Table(name = "persona")
 
 public class Persona implements Serializable {
 
@@ -20,32 +22,34 @@ public class Persona implements Serializable {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int per_id;
+	@Column(nullable = false)
 	private String per_cedula;
+	@Column(nullable = false)
 	private String per_nombre;
+	@Column(nullable = false)
 	private String per_apellido;
-	private String per_direcion;
+	@Column(nullable = false)
 	private String per_email;
+	@Column(nullable = false)
 	private String per_contrasena;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-	private Set<Telefono> telefono = new HashSet<Telefono>();
+	private ArrayList<Telefono> telefonos = new ArrayList<Telefono>();
 	
 	
 	public Persona() {
 		super();
 	}
 
-	public Persona(int per_id, String per_cedula, String per_nombre, String per_apellido, String per_direcion,
-			String per_email, String per_contrasena, Set<Telefono> telefono) {
+	public Persona(int per_id, String per_cedula, String per_nombre, String per_apellido,
+			String per_email, String per_contrasena) {
 		super();
 		this.per_id = per_id;
 		this.per_cedula = per_cedula;
 		this.per_nombre = per_nombre;
 		this.per_apellido = per_apellido;
-		this.per_direcion = per_direcion;
 		this.per_email = per_email;
 		this.per_contrasena = per_contrasena;
-		this.telefono = telefono;
 	}
 
 
@@ -90,16 +94,6 @@ public class Persona implements Serializable {
 	}
 
 
-	public String getPer_direcion() {
-		return per_direcion;
-	}
-
-
-	public void setPer_direcion(String per_direcion) {
-		this.per_direcion = per_direcion;
-	}
-
-
 	public String getPer_email() {
 		return per_email;
 	}
@@ -118,11 +112,24 @@ public class Persona implements Serializable {
 	public void setPer_contrasena(String per_contrasena) {
 		this.per_contrasena = per_contrasena;
 	}
+	public ArrayList<Telefono> getTelefonos() {
+		return telefonos;
+	}
+
+	public void setTelefonos(ArrayList<Telefono> telefonos) {
+		this.telefonos = telefonos;
+	}
+	
+	public void addTelefonos(Telefono telefono) {
+		this.telefonos.add(telefono);
+	}
 
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	
 	
    
 }
