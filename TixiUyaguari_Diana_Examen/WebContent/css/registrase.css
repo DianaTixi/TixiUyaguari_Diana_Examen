@@ -15,13 +15,13 @@ body {
 
 a {
     text-decoration: none;
-    color: rgb(25, 232, 96);
+    color: #1ab188;
     -webkit-transition: 0.5s ease;
     transition: 0.5s ease;
 }
 
 a:hover {
-    color: rgb(25, 232, 96);
+    color: #179b77;
 }
 
 .form {
@@ -61,12 +61,12 @@ a:hover {
 }
 
 .tab-group li a:hover {
-    background: rgb(25, 232, 96);
+    background: #179b77;
     color: #ffffff;
 }
 
 .tab-group .active a {
-    background: rgb(25, 232, 96);
+    background: #1ab188;
     color: #ffffff;
 }
 
@@ -96,7 +96,7 @@ label {
 
 label .req {
     margin: 2px;
-    color: rgb(25, 232, 96);
+    color: #1ab188;
 }
 
 label.active {
@@ -114,18 +114,31 @@ label.highlight {
     color: #ffffff;
 }
 
-
 input,
 textarea {
     font-size: 22px;
     display: block;
     width: 100%;
-    height: 100px;
+    height: 100%;
     padding: 5px 10px;
     background: none;
     background-image: none;
     border: 1px solid #a0b3b0;
     color: #ffffff;
+    border-radius: 0;
+    -webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+select {
+	font-size: 22px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    background: none;
+    background-image: none;
+    border: 1px solid #a0b3b0;
+    color: White;
     border-radius: 0;
     -webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -172,17 +185,16 @@ textarea {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    background: rgb(25, 232, 96);
+    background: #1ab188;
     color: #ffffff;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-appearance: none;
 }
 
-
 .button:hover,
 .button:focus {
-    background: rgb(25, 232, 96);
+    background: #179b77;
 }
 
 .button-block {
@@ -193,22 +205,4 @@ textarea {
 .forgot {
     margin-top: -20px;
     text-align: right;
-}
-select {
-	font-size: 22px;
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 5px 10px;
-    background: none;
-    background-image: none;
-    border: 1px solid #a0b3b0;
-    color: White;
-    border-radius: 0;
-    -webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.login {
-    background-image: url(https://i1.wp.com/insisfenix.com/wp-content/uploads/2020/04/telefon%C3%ADa-virtual.jpg?fit=1000%2C667&ssl=1);
 }

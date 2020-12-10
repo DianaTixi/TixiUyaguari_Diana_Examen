@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +31,8 @@
 
     <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/registrase.css" rel="stylesheet" type="text/css" />
+    <link href="css/IniciarSesion.css" rel="stylesheet" type="text/css" />
+    <link href="css/listar.css" rel="stylesheet" type="text/css" />
 
     <!-- =======================================================
     Theme Name: BizPage
@@ -53,13 +58,13 @@
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class="menu-active"><a href="#intro">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#contact">Iniciar Sesion</a></li>
-                    
+                    <li class="menu-active"><a href="/TixiUyaguari_Diana_Examen/index.html">Home</a></li>
+                    <li><a href="/TixiUyaguari_Diana_Examen/index.html">About Us</a></li>
+                    <li><a href="/TixiUyaguari_Diana_Examen/index.html">Portfolio</a></li>
+                    <li><a href="/TixiUyaguari_Diana_Examen/index.html">Team</a></li>
+                    <li><a href="/TixiUyaguari_Diana_Examen/index.html">Contact</a></li>
+                    <li><a href="/TixiUyaguari_Diana_Examen/login.html">Iniciar Sesion</a></li>
+                    <li><a href="/TixiUyaguari_Diana_Examen/TipoOperadorController">Registrase</a></li>
                 </ul>
             </nav>
             <!-- #nav-menu-container -->
@@ -70,25 +75,27 @@
     Intro Section
   ============================-->
         <section class="login">
-            <div class="login">
-                <div class="form">
-                    <ul class="tab-group">
-                        <li class="tab active"><a href="IniciarSession.html">Log In</a></li>
-                        <li class="tab"><a href="/TixiUyaguari_Diana_Examen/TipoOperadorController">Sign Up</a></li>
-                    </ul>
+            <c:set var="lista" scope="request" value="${listaT}" />
 
-                    <div class="datos">
-                        <form id="formulario01" method="POST" action="/Practica1_DT_FP/IniciarSesionController">
-                            <input type="text" id="correo" name="correo" value="" placeholder="Ingrese el correo ..." />
-                            <br><br>
-                            <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña ..." />
-                            <br><br>
-                            <input type="submit" id="login" name="login" value="Iniciar Sesión" />
-                        </form>
-                    </div>
-
-                </div>
-            </div>
+	<table>
+		<tr>
+			<td><strong>Nombre</strong></td>
+			<td><strong>Cedula</strong></td>
+			<td><strong>Numero</strong></td>
+			<td><strong>Operadora</strong></td>
+			<td><strong>Tipo</strong></td>
+		</tr>
+		<c:forEach var="t" items="${lista}">
+			<tr>
+				<td>${t.persona.per_nombre}</td>
+				<td>${t.persona.per_cedula}</td>
+				<td>${t.tel_numero}</td>
+				<td>${t.operadora.ope_nombre}</td>
+				<td>${t.tipo.tip_nombre}</td>
+				
+			</tr>
+		</c:forEach>
+	</table>
         </section>
         <!-- #intro -->
 

@@ -24,7 +24,7 @@ public class Operadora implements Serializable {
 	private String ope_nombre;
 	
 	@OneToMany(cascade = CascadeType.ALL , mappedBy = "operadora")
-	private ArrayList<Telefono>telefonos = new ArrayList<Telefono>();
+	private Set<Telefono> telefonos = new HashSet<Telefono>();
 
 	public Operadora() {
 		super();
@@ -54,13 +54,13 @@ public class Operadora implements Serializable {
 		this.ope_nombre = ope_nombre;
 	}
 
-	
-	public ArrayList<Telefono> getTelefonos() {
+
+	public Set<Telefono> getTelefonos() {
 		return telefonos;
 	}
 
 
-	public void setTelefonos(ArrayList<Telefono> telefonos) {
+	public void setTelefonos(Set<Telefono> telefonos) {
 		this.telefonos = telefonos;
 	}
 
@@ -71,6 +71,42 @@ public class Operadora implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ope_id;
+		result = prime * result + ((ope_nombre == null) ? 0 : ope_nombre.hashCode());
+		result = prime * result + ((telefonos == null) ? 0 : telefonos.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Operadora other = (Operadora) obj;
+		if (ope_id != other.ope_id)
+			return false;
+		if (ope_nombre == null) {
+			if (other.ope_nombre != null)
+				return false;
+		} else if (!ope_nombre.equals(other.ope_nombre))
+			return false;
+		if (telefonos == null) {
+			if (other.telefonos != null)
+				return false;
+		} else if (!telefonos.equals(other.telefonos))
+			return false;
+		return true;
 	}
 	
    

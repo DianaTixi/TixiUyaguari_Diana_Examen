@@ -1,11 +1,17 @@
 package ec.edu.ups.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import ec.edu.ups.dao.GenericDAO;
+import ec.edu.ups.entidades.Operadora;
+import ec.edu.ups.entidades.Persona;
+import ec.edu.ups.entidades.Telefono;
+import ec.edu.ups.entidades.Tipo;
 
 public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	private Class<T> persistentClass;
@@ -82,5 +88,45 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	return lista;
 
     }
-
+	
+	@Override
+	public T buscarC(String cedula) {
+		String jpql1 = "Select p FROM Persona p WHERE p.per_cedula= '"+cedula+ "'";
+		Query query = em.createQuery(jpql1);
+		Persona persona = (Persona)query.getSingleResult();
+		return (T) persona ;		
+	}
+	
+	
+	@Override
+	public T buscarT(String nombre) {
+		String jpql1 = "Select t FROM Tipo t WHERE t.tip_nombre= '"+nombre+ "'";
+		Query query = em.createQuery(jpql1);
+		Tipo tipo = (Tipo)query.getSingleResult();
+		return (T) tipo ;		
+	}
+	
+	@Override
+	public T buscarO(String nombre) {
+		Operadora operadora = new Operadora();
+		String jpql1 = "Select o FROM Operadora o WHERE o.ope_nombre= '"+nombre+ "'";
+		Query query = em.createQuery(jpql1);
+		operadora = (Operadora)query.getSingleResult();
+		return (T) operadora ;		
+	}
+	
+	@Override
+	public List<Persona> findCedula(String cedula) {
+		String jpql1 = "Select p FROM Persona p WHERE p.per_cedula= '"+cedula+ "'";
+		List<Persona> persona = em.createQuery(jpql1).getResultList();
+		return persona ;
+	}
+	
+	@Override
+	public List<Telefono> findNumero(String numero) {
+		String jpql1 = "Select tel FROM Telefono tel WHERE tel.tel_numero= '"+numero+ "'";
+		List<Telefono> telefonos = em.createQuery(jpql1).getResultList();
+		return telefonos ;
+	}
+		
 }

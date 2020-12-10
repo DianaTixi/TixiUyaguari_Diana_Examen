@@ -27,7 +27,8 @@
 
     <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/registrase.css" rel="stylesheet" type="text/css" />
+    <link href="css/IniciarSesion.css" rel="stylesheet" type="text/css" />
+    <link href="css/busqueda.css" rel="stylesheet" type="text/css" />
 
     <!-- =======================================================
     Theme Name: BizPage
@@ -59,7 +60,6 @@
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#contact">Iniciar Sesion</a></li>
-                    
                 </ul>
             </nav>
             <!-- #nav-menu-container -->
@@ -74,16 +74,47 @@
                 <div class="form">
                     <ul class="tab-group">
                         <li class="tab active"><a href="IniciarSession.html">Log In</a></li>
-                        <li class="tab"><a href="/TixiUyaguari_Diana_Examen/TipoOperadorController">Sign Up</a></li>
+                        <li class="tab"><a href="Registrase.html">Sign Up</a></li>
                     </ul>
 
                     <div class="datos">
-                        <form id="formulario01" method="POST" action="/Practica1_DT_FP/IniciarSesionController">
-                            <input type="text" id="correo" name="correo" value="" placeholder="Ingrese el correo ..." />
-                            <br><br>
-                            <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña ..." />
-                            <br><br>
-                            <input type="submit" id="login" name="login" value="Iniciar Sesión" />
+                        <form id="formulario01" action="/TixiUyaguari_Diana_Examen/CrearPersonaController" method="post">
+		<label>Cedula</label><br><br>
+                    <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese la Cedula ..." />
+                    <br><br>
+                    <label>Nombre</label><br><br>
+                    <input type="text" id="nombre" name="nombre" value="" placeholder="Ingrese el Nombre ..." />
+                    <br><br>
+                    <label>Apellido</label><br><br>
+                    <input type="text" id="apellido" name="apellido" value="" placeholder="Ingrese un abreve descripcion del producto ..." />
+                    <br><br>
+                    <label>Email</label><br><br>
+                    <input type="text" id="email" name="email" value="" placeholder="Ingrese el Stock Producto..." />
+                    <br><br>
+                    <label>Contrasena</label><br><br>
+                    <input type="password" id="pass" name="pass" value="" placeholder="Ingrese su contrasena..." />
+                    <br><br>
+                    <label>Nro Telefono</label><br><br>
+                    <input type="text" id="numero" name="numero" value="" placeholder="Ingrese el Stock Producto..." />
+                    <br><br>
+                    <label>Operadora</label><br><br>
+                    <SELECT name="operadora">
+					<option value=_"Seleccionar Tipo  " selected >Seleccionar Tipo</option>
+					<c:forEach var="o" items="${operadora}">
+							<option>${o.ope_nombre}</option>
+				        </c:forEach>
+				    </SELECT>
+				    <br><br>
+				    <label>Tipo</label><br><br>
+				    <SELECT name="tipo">
+					<option>Seleccionar Tipo</option>
+					<c:forEach var="t" items="${tipo}">
+							<option>${t.tip_nombre}</option>
+				        </c:forEach>
+				    </SELECT><br><br>
+				    
+                    <input type="submit" id="login" name="login" value="Crear" />
+                    <input type="reset" value="Cancelar" />
                         </form>
                     </div>
 

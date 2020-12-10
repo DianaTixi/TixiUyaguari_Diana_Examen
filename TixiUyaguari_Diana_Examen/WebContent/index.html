@@ -27,6 +27,7 @@
 
     <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/busqueda.css" rel="stylesheet">
 
     <!-- =======================================================
     Theme Name: BizPage
@@ -58,6 +59,8 @@
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="login.html">Iniciar Sesion</a></li>
+                    <li><a href="/TixiUyaguari_Diana_Examen/TipoOperadorController">Registrase</a></li>
+                    <li><a href="/TixiUyaguari_Diana_Examen/TipoOperadoraController">Registrar Telefono</a></li>
                 </ul>
             </nav>
             <!-- #nav-menu-container -->
@@ -68,21 +71,22 @@
     <!--==========================
     Intro Section
   ============================-->
-    <section id="intro">
-
-        <div class="intro-container">
-            <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-
-                <ol class="carousel-indicators"></ol>
-
-                <div class="carousel-inner" role="listbox">
-
-                    <div class="carousel-item active">
-                        <div class="carousel-background"><img src="img/fondo2.jpg" alt=""></div>
-                        <div class="carousel-container">
-
-                        </div>
+    <section class="login">
+            <div class="login">
+                <div class="form">
+                        <form id="formulario01" method="POST" action="/TixiUyaguari_Diana_Examen/BuscarController">
+                        	<select name="opcion" class="tab-group">
+							  <option >Cedula</option> 
+							  <option >Numero</option>
+							</select>
+                            <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese la cedula" />
+                            <br><br>
+                            <input type="submit" id="login" name="login" value="Buscar" />
+                        </form>
                     </div>
+                    </div>
+
+        </section>          
                     <!-- 
                     <div class="carousel-item">
                         <div class="carousel-background"><img src="img/intro-carousel/2.jpg" alt=""></div>
@@ -147,8 +151,8 @@
                 </a>
 
             </div>
-        </div>-->
-    </section>
+        </div>
+    </section>-->
     <!-- #intro -->
 
     <main id="main">
